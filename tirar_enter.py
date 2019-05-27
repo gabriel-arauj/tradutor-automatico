@@ -2,6 +2,7 @@ import sys
 from googletrans import Translator
 import clipboard
 import keyboard
+import time
 
 
 
@@ -43,18 +44,31 @@ def traduzir(string):
 def areaTransferencia():
     string = clipboard.paste()
     return string
+
 def colarAreaTransf(string):
     clipboard.copy(string)
 
+def listener(string):
+    while clipboard.paste() == string:
+        time.sleep(1)
 
 if __name__ == "__main__":
     
     while True:
-        keyboard.wait('ctrl+x')
+        """Descomente caso queira usar a tecla de atalho"""
+        #keyboard.wait('ctrl+x')
+
         string = areaTransferencia()
+
+        """Descomente caso queria ler de um arquivo"""
+        #string = abrirArquivo()
+
         string = tratarString(string)
         string = traduzir(string)
         colarAreaTransf(string)
-        #string = abrirArquivo()
+
+        """" Descomente para gravar num arquivo"""
         #gravaArquivo(string)
+
         print("Pronto!")
+        listener(string)
