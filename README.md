@@ -4,9 +4,13 @@ Programa que traduz para o português automaticamente um texto copiado para a á
 Pode ser adaptado para outros idiomas.
 
 Requerimetos:
-````pip install googletrans
+````
+pip install googletrans
 pip install clipboard
-pip install keyboard````
+pip install keyboard
+
+````
+
 
 Uso:
 instale os requerimetos e execute o programa. copie algum texto e cole para verificar se foi traduzido.
