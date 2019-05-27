@@ -4,9 +4,16 @@ import clipboard
 import keyboard
 import time
 
+"""
+Requerimentos:
+pip install googletrans
+pip install clipboard
+pip install keyboard
+
+"""
 
 
-# Abrindo arquivo
+"""Abre um arquivo"""
 def abrirArquivo():
     try:
         caminho = sys.argv[1]
@@ -22,7 +29,7 @@ def abrirArquivo():
     f.close
     return string
 
-# Tratar String
+"""Trata a string tirando \n indesejados"""
 def tratarString(string):
     string = string.replace("-\n", "")
     string = string.replace("\n", " ")
@@ -30,24 +37,29 @@ def tratarString(string):
     string = string.replace("\r", "")
     return string
 
+"""Grava o que foi passado como parâmetro no arquivo especificado como agumento na chamada do programa"""
 def gravaArquivo(string):
     caminho = sys.argv[1]
     f = open(caminho, 'w', encoding='utf-8')
     f.write(string)
     f.close
 
+"""Traduz o texto requerido"""
 def traduzir(string):
     translator = Translator(service_urls=['translate.google.com.br',])
     string = translator.translate(string, dest='pt').text
     return string
-    
+
+"""Copia o conteúdo da área de transferência"""
 def areaTransferencia():
     string = clipboard.paste()
     return string
 
+"""Cola o conteúdo traduzido na área de trasnferência"""
 def colarAreaTransf(string):
     clipboard.copy(string)
 
+"""Fica esperando a area de trasnferencia mudar"""
 def listener(string):
     while clipboard.paste() == string:
         time.sleep(1)
@@ -69,6 +81,6 @@ if __name__ == "__main__":
 
         """" Descomente para gravar num arquivo"""
         #gravaArquivo(string)
-
         print("Pronto!")
+        """Comente caso queira usar telcas de atalho"""
         listener(string)
