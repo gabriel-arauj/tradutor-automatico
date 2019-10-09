@@ -10,12 +10,7 @@ pip install clipboard
 pip install keyboard
 
 ````
-O que outras pessoas estão dizendo
-O que outras pessoas estão dizendo
-O que outras pessoas estão dizendo
 
-O que outras pessoas estão dizendo
-O que outras pessoas estão dizendo
 Uso:
 instale os requerimetos e execute o programa. copie algum texto e cole para verificar se foi traduzido.
 
